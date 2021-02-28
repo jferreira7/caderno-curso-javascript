@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+
     <title>Caderno</title>
 
     <style>
@@ -37,6 +38,7 @@
         font-family: "Lato", sans-serif;
         font-weight: 700;
         font-size: 150%;
+        cursor: pointer;
       }
 
       p {
@@ -44,6 +46,24 @@
         font-weight: 400;
         font-size: 100%;
         line-height: 150%;
+      }
+      .conteudo {
+        display: none;
+      }
+
+      ion-icon {
+        display: inline-block;
+        text-align: center;
+        /* font-size: 20px; */
+
+        /* secrets to align text and icons */
+        line-height: 120%;
+        vertical-align: middle;
+        margin-top: -10px;
+      }
+
+      .show {
+        display: none;
       }
 
       @media (max-width: 1200px) {
@@ -55,125 +75,132 @@
   </head>
   <body>
     <h1>Caderno de JavaScript</h1>
-    <h3>JavaScript - Definição</h3>
-    <ul>
-      <li>
-        <p>
-          <strong>High-Level: </strong> Linguagens de alto nível não permitem
-          que o programador controle o recurso que irá ser utilizado pelo
-          programa.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Garbage-collected: </strong> A coleta de lixo é um algoritmo
-          dentro do JavaScript que remove automaticamente todos os objetos que
-          não está sendo utilizados da memória.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Interpreted or Just-in-time compiled:</strong>
-          Dentro do JavaScript acontece a interpretação da linguagem de alto
-          nível em linguagem de máquina. Os paradigmas podem ser classificados
-          em
-          <em>Imperativos</em> e <em>Declativos</em>.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Multi-Paradigm: </strong> Existem três tipos de paradigma de
-          programação: a procedural, a orientada a objetos e a funcional.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Prototype-Based Object-Oriented: </strong>
-          Tudo no JavaScript é um objeto, tirando os valores primitivos como:
-          números, strings e etc. Mas os arrays são objetos também. Os
-          <em>Prototypes</em> são as classes originárias, neles que ficam os
-          métodos que depois utilizamos. Exemplo de prototypes:
-          Array.prototype.push ou Array.prototype.indexOf. Esses métodos serão
-          herdados por todos os arrays criados.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>First-class Functions: </strong> Dizer que ela é uma linguagem
-          com funcões de primeira classe, significa que as funções podem ser
-          tratadas como variavéis. Nós podemos passsar funções dentro de outras
-          funções e retorna-las de outras funções também. É esse que permite o
-          praradigma da programação funcional na linguagem.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Dynamic: </strong> É uma linguagem ginâmica por ela é
-          dinâmicamente tipada, ou seja, de tipagem fraca. Os tipos das
-          variáveis são conhecidos no momento que o código está rodando.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>
-            Event Loop Concurrency Model + Single-Threaded + Non-Blocking Event
-            Loop:
-          </strong>
-          O Concurrency Model (modelo de simultaneidade) significa que o
-          JavaScriptlida com várias tarefas acontecendo ao mesmo tempo. Mas ele
-          trabalha apenas em um thread, significando que ele pode fazer apenas
-          uma coisa de cada vez. Então o Non-Blocking Event Loop pega uma tarefa
-          longa e a executa em segunda plano, e dpeois a colcoa no thread
-          principal de novo quando essa tarefa termina.
-        </p>
-      </li>
-    </ul>
-    <h3>Compilation vs. Interpretation</h3>
-    <ul>
-      <li>
-        <p>
-          <strong>Compilation: </strong> Na compilação, todo o código é
-          convertido em linguagem de máquina de uma vez, e escrito em um arquivo
-          binário que pode ser executado por qualquer computador.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Interpretation: </strong> Na interpretação, existe um
-          intérprete que percorre o código executando linha por linha. Mas o
-          código ainda precisa ser convertido em linguagem de máquina. O
-          JavaScript costumava ser uma linguagem de interpretação, mas esse tipo
-          de linguagem costuma ser muito mais lenta que as linguagens
-          compiladas.
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Just-in-time (JIT) compilation: </strong> Agora o
-          JavaScriptusa uma msitura entre compilação e interpretação, a chamada
-          Just-in-time Compilation. O programa é executado logo em seguida que o
-          código é transformado em linguagem de máquina, e por isso, ele não é
-          mais portatil, não gerando um arquivo que pode ser executado em outras
-          máquinas.
-        </p>
-      </li>
-    </ul>
-    <img src="img/Compilation-Interpretation-JIT.PNG" alt="" />
-    <h3>Como o JIT funciona</h3>
-    <p>
-      O código JS é convertido pela AST que analisará o código procurando erros
-      e reconhecendo as variáves. Em seguida o código é convertido em linguagem
-      de máquina (compilado) e executado instantaneamente. Só que, enquanto o
-      código já está sendo executado pelo V8, está acontecendo vários processos
-      de otimização e recompilação do mesmo código. Isso acontece várias vezes,
-      o código otimzado é simplesmente trocado por uma mais otimizado ainda, sem
-      nunca interromper a execução. Toda essa análise, compilação e otimização
-      acontece dentro de alguns threads especiais dentro do moto que não podem
-      ser acessados por nós pelo código. Então, essa otimização acontece fora do
-      thread principal, que está executando a Call Stack, executando o nosso
-      próprio código.
-    </p>
-    <img src="img/How-To-Works-JIT.PNG" alt="" />
+
+    <h3 id="topico">JavaScript - Definição</h3>
+    <div class="conteudo">
+      <ul>
+        <li>
+          <p>
+            <strong>High-Level: </strong> Linguagens de alto nível não permitem
+            que o programador controle o recurso que irá ser utilizado pelo
+            programa.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Garbage-collected: </strong> A coleta de lixo é um algoritmo
+            dentro do JavaScript que remove automaticamente todos os objetos que
+            não está sendo utilizados da memória.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Interpreted or Just-in-time compiled:</strong>
+            Dentro do JavaScript acontece a interpretação da linguagem de alto
+            nível em linguagem de máquina. Os paradigmas podem ser classificados
+            em
+            <em>Imperativos</em> e <em>Declativos</em>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Multi-Paradigm: </strong> Existem três tipos de paradigma de
+            programação: a procedural, a orientada a objetos e a funcional.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Prototype-Based Object-Oriented: </strong>
+            Tudo no JavaScript é um objeto, tirando os valores primitivos como:
+            números, strings e etc. Mas os arrays são objetos também. Os
+            <em>Prototypes</em> são as classes originárias, neles que ficam os
+            métodos que depois utilizamos. Exemplo de prototypes:
+            Array.prototype.push ou Array.prototype.indexOf. Esses métodos serão
+            herdados por todos os arrays criados.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>First-class Functions: </strong> Dizer que ela é uma
+            linguagem com funcões de primeira classe, significa que as funções
+            podem ser tratadas como variavéis. Nós podemos passsar funções
+            dentro de outras funções e retorna-las de outras funções também. É
+            esse que permite o praradigma da programação funcional na linguagem.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Dynamic: </strong> É uma linguagem ginâmica por ela é
+            dinâmicamente tipada, ou seja, de tipagem fraca. Os tipos das
+            variáveis são conhecidos no momento que o código está rodando.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>
+              Event Loop Concurrency Model + Single-Threaded + Non-Blocking
+              Event Loop:
+            </strong>
+            O Concurrency Model (modelo de simultaneidade) significa que o
+            JavaScriptlida com várias tarefas acontecendo ao mesmo tempo. Mas
+            ele trabalha apenas em um thread, significando que ele pode fazer
+            apenas uma coisa de cada vez. Então o Non-Blocking Event Loop pega
+            uma tarefa longa e a executa em segunda plano, e dpeois a colcoa no
+            thread principal de novo quando essa tarefa termina.
+          </p>
+        </li>
+      </ul>
+      <h3>Compilation vs. Interpretation</h3>
+      <ul>
+        <li>
+          <p>
+            <strong>Compilation: </strong> Na compilação, todo o código é
+            convertido em linguagem de máquina de uma vez, e escrito em um
+            arquivo binário que pode ser executado por qualquer computador.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Interpretation: </strong> Na interpretação, existe um
+            intérprete que percorre o código executando linha por linha. Mas o
+            código ainda precisa ser convertido em linguagem de máquina. O
+            JavaScript costumava ser uma linguagem de interpretação, mas esse
+            tipo de linguagem costuma ser muito mais lenta que as linguagens
+            compiladas.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Just-in-time (JIT) compilation: </strong> Agora o
+            JavaScriptusa uma msitura entre compilação e interpretação, a
+            chamada Just-in-time Compilation. O programa é executado logo em
+            seguida que o código é transformado em linguagem de máquina, e por
+            isso, ele não é mais portatil, não gerando um arquivo que pode ser
+            executado em outras máquinas.
+          </p>
+        </li>
+      </ul>
+      <img src="img/Compilation-Interpretation-JIT.PNG" alt="" />
+    </div>
+
+    <h3 id="topico">Como o JIT funciona</h3>
+    <div class="conteudo">
+      <p>
+        O código JS é convertido pela AST que analisará o código procurando
+        erros e reconhecendo as variáves. Em seguida o código é convertido em
+        linguagem de máquina (compilado) e executado instantaneamente. Só que,
+        enquanto o código já está sendo executado pelo V8, está acontecendo
+        vários processos de otimização e recompilação do mesmo código. Isso
+        acontece várias vezes, o código otimzado é simplesmente trocado por uma
+        mais otimizado ainda, sem nunca interromper a execução. Toda essa
+        análise, compilação e otimização acontece dentro de alguns threads
+        especiais dentro do moto que não podem ser acessados por nós pelo
+        código. Então, essa otimização acontece fora do thread principal, que
+        está executando a Call Stack, executando o nosso próprio código.
+      </p>
+      <img src="img/How-To-Works-JIT.PNG" alt="" />
+    </div>
+
     <h3>JavaScript JIT</h3>
     <p>
       O Runtime acontece nos navegadores por causa da engine do JS. Mas só o
@@ -224,5 +251,15 @@
     <img src="img/Call-Stacks-Execution-Context.PNG" alt="" />
     <h3>Scope and the Scope Chain</h3>
     <p></p>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   </body>
+  <script>
+    const elemento = document.querySelectorAll("#topico");
+    elemento.forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        el.nextElementSibling.classList.toggle("conteudo");
+        console.log(el);
+      });
+    });
+  </script>
 </html>
