@@ -14,7 +14,6 @@
     <title>Caderno</title>
 
     <style>
-      
       /* * {
         margin: 0;
         padding: 0;
@@ -232,7 +231,10 @@
       <img src="img/Runtime-JS-Browser.PNG" alt="" />
       <p>Execução do JS no Node.JS:</p>
       <img src="img/Runtime-JS-NodeJS.PNG" alt="" />
-      <h3>Execution Context</h3>
+    </div>
+
+    <h3 id="topico">Execution Context</h3>
+    <div class="conteudo">
       <p>
         Existe um contexto de execução global que após o código ser compilado,
         ele é criado e executado. Dentro desse contexto global estaram as
@@ -265,11 +267,60 @@
     </div>
 
     <h3 id="topico">Scope and the Scope Chain</h3>
+    <div class="conteudo">
+      <p>
+        Um escopo é um espaço ou ambiente onde certa variável pode ser
+        declarada. Existem o
+        <b>escopo global, o escopo de função e o escopo de bloco</b>. O escopo
+        de uma variável é uma região do nosso código onde certa variável pode
+        ser acessada. Funções e várias podem ser entendidos como a mesma coisa,
+        pois funções são apenas valores que são armazenados em variáveis.
+        Variáveis ou constantes criadas dentro das funções não podem ser
+        acessadas fora do escopo da função. <br />
+        Dentro do Block Scope, as variáveis do tipo <b>var</b> pode ser
+        acessadas fora do escopo. Bloco Scope incluem: if, for... No modo
+        <b>Strict</b> as funções criadas dentro do Block Scope só podem ser
+        acessadas dentro do bloco.
+      </p>
+      <img src="img/Scope-Global-Functions-BlockScope.PNG" alt="" />
+      <p>
+        No Scope Chain, quando uma função filha precisa de uma variável que não
+        está em seu escopo, ela vai procurar no escopo de seu pai, e não que ela
+        vai copiar essa variável para o seu escopo. Vale lembrar que um escopo
+        mais externo nunca terá acesso a variável de um escopo mais intero,
+        mesmo que este seja seu filho (one-way). Tudo aplicado as variáveis é
+        aplicado as funções também, afinal, uma funções pode ser declarada
+        dentro de uma variável. A primeira variável encontrada com o nome
+        procurado será o valor passado, mesmo que exista outra variável com o
+        mesmo nome só que em um escopo mais longe.
+        <br /><br />
+        Como a variável <b>millenial</b> foi delcara como <b>var</b>, dentro de
+        um if (block scope), ela pode ser acessada pelo escopo pai. Ela na
+        verdade acaba pertecendo ao escopo da função pai e não do bloco, pois
+        ela é uma variável de function-scope. Escopos irmãos não obtem acesso as
+        variáveis um do outro. Só no caso da <b>var</b> no block scope, que a
+        função second() tem acesso, porque na verdade ela pertence a função
+        first().
+      </p>
+      <img src="img/Scope-Chain.PNG" alt="" />
+      <p><em>Scope Chain vs Call Stack</em></p>
+      <p>
+        O Scope Chain não tem nada a ver com a ordem em que as funções são
+        chamadas no Call Stack. A ordem das chamadas das funções não é
+        relevantes para o Scope Chain. <br /><br />
+        No exemplo abaixo, a função third() não terá acesso as constantes
+        <b>b</b> e <b>c</b>, por isso dará erro.
+      </p>
+      <img src="img/Scope-Chain-vs-Call-Stacks.PNG" alt="" />
+    </div>
+
+    <h3 id="topico"></h3>
     <div class="">
+      <h3></h3>
+    </div>
 
     <h3 id="topico"></h3>
     <div class=""></div>
-
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   </body>
