@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ptBR">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,13 @@
     <title>Caderno</title>
 
     <style>
+      
+      /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      } */
+
       body {
         width: 60%;
         margin: 0 auto;
@@ -47,6 +54,7 @@
         font-size: 100%;
         line-height: 150%;
       }
+
       .conteudo {
         display: none;
       }
@@ -63,7 +71,7 @@
       }
 
       .show {
-        display: none;
+        display: block;
       }
 
       @media (max-width: 1200px) {
@@ -150,7 +158,10 @@
           </p>
         </li>
       </ul>
-      <h3>Compilation vs. Interpretation</h3>
+    </div>
+
+    <h3 id="topico">Compilation vs. Interpretation</h3>
+    <div class="conteudo">
       <ul>
         <li>
           <p>
@@ -201,56 +212,65 @@
       <img src="img/How-To-Works-JIT.PNG" alt="" />
     </div>
 
-    <h3>JavaScript JIT</h3>
-    <p>
-      O Runtime acontece nos navegadores por causa da engine do JS. Mas só o
-      motor (engine) não é o suficiente, é preciso também das WEB APIs: DOM,
-      Timers, o Console.log(). As WEB APIs são fornecidas pela engine e não
-      estão pela prórpia linguagem JS. O JS obtem acesso as essas WEB APIs pelo
-      objeto global window. O JavaScript Runtime também precisa que se tenha a
-      Callback Queue (Fila de retorno de chamadas), parque todas as funções de
-      retorno de chamadas estejam prontas para serem executadas.
-    </p>
-    <p>
-      O Event Loop pega as funções do Callback Queue e as colocam no Call Stack
-      para que elas sejam executadas. Vale lembrar que o Event Loop é essencial
-      para o <em>Non-blocking concurrency model</em>.
-    </p>
-    <p>Execução do JS nos navegadores:</p>
-    <img src="img/Runtime-JS-Browser.PNG" alt="" />
-    <p>Execução do JS no Node.JS:</p>
-    <img src="img/Runtime-JS-NodeJS.PNG" alt="" />
-    <h3>Execution Context</h3>
-    <p>
-      Existe um contexto de execução global que após o código ser compilado, ele
-      é criado e executado. Dentro desse contexto global estaram as variáveis
-      globais e as funções. Cada função tem o seu contexto de execução, como se
-      fosse uma caixinha com suas váriáveis e métodos.
-    </p>
-    <p>
-      Itens dentro de um contexto de execução: variáveis do ambiente (variáveis,
-      funções e argumentos dos objetos); Corrente de escopo - que consistem em
-      referências as variavéis que estão fora do contexto da função; e a
-      palavra-chave this. Vale ressaltar que os contextos de execução das arrow
-      functions não tem os argumentos dos objetos e a palavra-chave this. Mas
-      elas podem usar os argumentos dos objetos e a plavra-chave this de alguma
-      função pai sua que seja uma função regular.
-    </p>
-    <img src="img/Execution-Context.PNG" alt="" />
-    <p>
-      O contexto de execução que está no topo é o contexto que atualmente está
-      sendo executado, pois foi a última função que foi requistada. Enquanto
-      isso, os outros contextos não estãos endo executados, esperando que a
-      última função seja finalizada, trazendo ou fazendo o que é esperado
-      dela.Isso acontece dessa maneira, uma coisa de cada vez, porque o
-      JavaScript apenas executa em um thread. Uma detalhe é que mesmo após a
-      função ser finalizada e tirada da Call Stack, parte de seu contexto pode
-      continuar vivendo no memória, não sendo o contexto totalmente destruido. O
-      contexto global apenas é finalizado quando fechamos a aba ou o navegador.
-    </p>
-    <img src="img/Call-Stacks-Execution-Context.PNG" alt="" />
-    <h3>Scope and the Scope Chain</h3>
-    <p></p>
+    <h3 id="topico">JavaScript JIT</h3>
+    <div class="conteudo">
+      <p>
+        O Runtime acontece nos navegadores por causa da engine do JS. Mas só o
+        motor (engine) não é o suficiente, é preciso também das WEB APIs: DOM,
+        Timers, o Console.log(). As WEB APIs são fornecidas pela engine e não
+        estão pela prórpia linguagem JS. O JS obtem acesso as essas WEB APIs
+        pelo objeto global window. O JavaScript Runtime também precisa que se
+        tenha a Callback Queue (Fila de retorno de chamadas), parque todas as
+        funções de retorno de chamadas estejam prontas para serem executadas.
+      </p>
+      <p>
+        O Event Loop pega as funções do Callback Queue e as colocam no Call
+        Stack para que elas sejam executadas. Vale lembrar que o Event Loop é
+        essencial para o <em>Non-blocking concurrency model</em>.
+      </p>
+      <p>Execução do JS nos navegadores:</p>
+      <img src="img/Runtime-JS-Browser.PNG" alt="" />
+      <p>Execução do JS no Node.JS:</p>
+      <img src="img/Runtime-JS-NodeJS.PNG" alt="" />
+      <h3>Execution Context</h3>
+      <p>
+        Existe um contexto de execução global que após o código ser compilado,
+        ele é criado e executado. Dentro desse contexto global estaram as
+        variáveis globais e as funções. Cada função tem o seu contexto de
+        execução, como se fosse uma caixinha com suas váriáveis e métodos.
+      </p>
+      <p>
+        Itens dentro de um contexto de execução: variáveis do ambiente
+        (variáveis, funções e argumentos dos objetos); Corrente de escopo - que
+        consistem em referências as variavéis que estão fora do contexto da
+        função; e a palavra-chave this. Vale ressaltar que os contextos de
+        execução das arrow functions não tem os argumentos dos objetos e a
+        palavra-chave this. Mas elas podem usar os argumentos dos objetos e a
+        plavra-chave this de alguma função pai sua que seja uma função regular.
+      </p>
+      <img src="img/Execution-Context.PNG" alt="" />
+      <p>
+        O contexto de execução que está no topo é o contexto que atualmente está
+        sendo executado, pois foi a última função que foi requistada. Enquanto
+        isso, os outros contextos não estãos endo executados, esperando que a
+        última função seja finalizada, trazendo ou fazendo o que é esperado
+        dela.Isso acontece dessa maneira, uma coisa de cada vez, porque o
+        JavaScript apenas executa em um thread. Uma detalhe é que mesmo após a
+        função ser finalizada e tirada da Call Stack, parte de seu contexto pode
+        continuar vivendo no memória, não sendo o contexto totalmente destruido.
+        O contexto global apenas é finalizado quando fechamos a aba ou o
+        navegador.
+      </p>
+      <img src="img/Call-Stacks-Execution-Context.PNG" alt="" />
+    </div>
+
+    <h3 id="topico">Scope and the Scope Chain</h3>
+    <div class="">
+
+    <h3 id="topico"></h3>
+    <div class=""></div>
+
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   </body>
   <script>
